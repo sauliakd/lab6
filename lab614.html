@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who's Buying Coffee?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffffff; /* White background */
+            color: #6a0dad; /* Purple text */
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #6a0dad; /* Purple button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #9932cc; /* Lighter purple on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Who's Buying Coffee?</h1>
+    <p>Click the button to find out who's paying for coffee!</p>
+    <button onclick="whoBuysCoffee()">Who's Buying?</button>
+
+    <script>
+        function whoBuysCoffee() {
+            // Array of names
+            const names = ["Alice", "Bob", "Charlie", "Diana", "Ethan", "Fiona"];
+            
+            // Generate a random index to select a name
+            const randomIndex = Math.floor(Math.random() * names.length);
+            const chosenName = names[randomIndex];
+
+            // Log the result to the console
+            console.log(chosenName + " is buying coffee for everyone!");
+        }
+    </script>
+
+</body>
+</html>

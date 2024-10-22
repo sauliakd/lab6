@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #F4C2C2; /* Baby pink */
+            margin-top: 50px;
+        }
+        h1 {
+            color: #ff4081;
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid #ff4081;
+            border-radius: 5px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff80ab;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Love Calculator</h1>
+
+    <p>Enter the names of two people to calculate their love score!</p>
+
+    <input type="text" id="name1" placeholder="Your Name">
+    <br>
+    <input type="text" id="name2" placeholder="Their Name">
+    <br>
+    <button onclick="calculateLoveScore()">Calculate Love Score</button>
+
+    <script>
+        function calculateLoveScore() {
+            var name1 = document.getElementById("name1").value;
+            var name2 = document.getElementById("name2").value;
+
+            if (name1 === "" || name2 === "") {
+                alert("Please enter both names!");
+                return;
+            }
+
+            // Генеруємо випадкове число від 1 до 100 для любовного відсотка
+            var loveScore = Math.floor(Math.random() * 100) + 1;
+
+            // Повертаємо результат у вигляді спливаючого вікна
+            alert(name1 + " and " + name2 + "'s love score is " + loveScore + "%");
+        }
+    </script>
+
+</body>
+</html>

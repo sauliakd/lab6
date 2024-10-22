@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Game</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #172232;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .dice {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .player {
+            margin: 0 50px;
+        }
+
+        .dice-image {
+            width: 150px;
+            height: 150px;
+        }
+
+        #title {
+            font-size: 40px;
+            color: rgb(112, 28, 28);
+        }
+
+        #restartButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 20px;
+            color: #fff;
+            background-color: #3a7d9a;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #restartButton:hover {
+            background-color: #2e617a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">Refresh to Roll the Dice!</h1>
+        <div class="dice">
+            <div class="player">
+                <h2>Player 1</h2>
+                <img id="dice1" class="dice-image" src="" alt="Dice">
+            </div>
+            <div class="player">
+                <h2>Player 2</h2>
+                <img id="dice2" class="dice-image" src="" alt="Dice">
+            </div>
+        </div>
+        <button id="restartButton">Roll Again</button>
+    </div>
+    <script>
+        // URL-адреси зображень кубиків
+        var diceImages = [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Dice-1-b.svg/800px-Dice-1-b.svg.png", // 1
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Dice-2-b.svg/800px-Dice-2-b.svg.png", // 2
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Dice-3-b.svg/800px-Dice-3-b.svg.png", // 3
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Dice-4-b.svg/800px-Dice-4-b.svg.png", // 4
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Dice-5-b.svg/800px-Dice-5-b.svg.png", // 5
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Dice-6-b.svg/800px-Dice-6-b.svg.png"  // 6
+        ];
+
+        // Функція для кидка кубиків
+        function rollDice() {
+            // Генеруємо випадкові числа для обох гравців
+            var randomNumber1 = Math.floor(Math.random() * 6);
+            var randomNumber2 = Math.floor(Math.random() * 6);
+            
+            // Оновлюємо зображення кубиків відповідно до випадкових чисел
+            document.getElementById("dice1").setAttribute("src", diceImages[randomNumber1]);
+            document.getElementById("dice2").setAttribute("src", diceImages[randomNumber2]);
+            
+            // Визначаємо переможця
+            if (randomNumber1 > randomNumber2) {
+                document.getElementById("title").innerHTML = "Player 1 Wins!";
+            } else if (randomNumber2 > randomNumber1) {
+                document.getElementById("title").innerHTML = "Player 2 Wins!";
+            } else {
+                document.getElementById("title").innerHTML = "It's a Draw!";
+            }
+        }
+
+        // Виклик функції для первинного кидка кубиків
+        rollDice();
+
+        // Додаємо обробник подій для кнопки перезапуску
+        document.getElementById("restartButton").addEventListener("click", rollDice);
+    </script>
+</body>
+</html>

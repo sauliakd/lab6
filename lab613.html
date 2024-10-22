@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leap Year Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffffff; /* Білий фон */
+            color: #6a0dad; /* Фіолетовий текст */
+        }
+        input[type="number"] {
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid #6a0dad; /* Фіолетова рамка */
+            border-radius: 5px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #6a0dad; /* Фіолетова кнопка */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #9932cc; /* Трохи світліший фіолетовий на наведення */
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Leap Year Checker</h1>
+
+    <p>Enter a year to check if it's a leap year.</p>
+
+    <input type="number" id="year" placeholder="Enter a year">
+    <br>
+    <button onclick="checkLeapYear()">Check Leap Year</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function checkLeapYear() {
+            var year = document.getElementById("year").value;
+
+            if (year === "") {
+                console.log("Please enter a year.");
+                return;
+            }
+
+            if (year % 4 === 0) {
+                if (year % 100 === 0) {
+                    if (year % 400 === 0) {
+                        console.log(year + " is a leap year.");
+                    } else {
+                        console.log(year + " is not a leap year.");
+                    }
+                } else {
+                    console.log(year + " is a leap year.");
+                }
+            } else {
+                console.log(year + " is not a leap year.");
+            }
+        }
+    </script>
+
+</body>
+</html>

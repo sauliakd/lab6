@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fff; /* White background */
+            color: #000; /* Black text */
+        }
+        input[type="number"] {
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid #000; /* Black border */
+            border-radius: 5px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #000; /* Black button */
+            color: #fff; /* White text */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #333; /* Darker button on hover */
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>BMI Calculator</h1>
+
+    <p>Enter your weight (kg) and height (m) to calculate your BMI.</p>
+
+    <input type="number" id="weight" placeholder="Weight (kg)">
+    <br>
+    <input type="number" id="height" placeholder="Height (m)">
+    <br>
+    <button onclick="calculateBMI()">Calculate BMI</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function calculateBMI() {
+            var weight = document.getElementById("weight").value;
+            var height = document.getElementById("height").value;
+
+            if (weight === "" || height === "") {
+                console.log("Please enter both weight and height.");
+                return;
+            }
+
+            var bmi = weight / (height * height);
+            bmi = bmi.toFixed(2); // округлення до двох знаків після коми
+
+            let message = getBMIMessage(bmi);
+            console.log("Your BMI is " + bmi + ". " + message);
+        }
+
+        function getBMIMessage(bmi) {
+            if (bmi < 18.5) {
+                return "You are underweight.";
+            } else if (bmi >= 18.5 && bmi < 24.9) {
+                return "You have a normal weight.";
+            } else if (bmi >= 25 && bmi < 29.9) {
+                return "You are overweight.";
+            } else if (bmi >= 30 && bmi < 34.9) {
+                return "You are in obesity class I.";
+            } else if (bmi >= 35) {
+                return "You are in obesity class II or higher.";
+            }
+        }
+    </script>
+
+</body>
+</html>
